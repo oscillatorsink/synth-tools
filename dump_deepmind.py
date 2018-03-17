@@ -56,11 +56,7 @@ def unpack_bytes(data):
     return bytes(unpacked)
 
 def main(args):
-    if "-l" in args:
-        print()
-        print_ports()
-        exit(0)
-
+    
     out_port_name = args[0]
     in_port_name = args[1]
     bank = BANKS[args[2].upper()]
@@ -123,6 +119,10 @@ def main(args):
     out.close()
         
 if __name__ == "__main__":
+    if "-l" in sys.argv[1:]:
+        print()
+        print_ports()
+        exit(0)
     if len(sys.argv) < 7:
         me = pathlib.Path(sys.argv[0]).name
         print()
